@@ -1,0 +1,353 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.head{
+    display: flex;
+    justify-content: center;
+}
+body{
+    box-sizing: border-box;
+    position: relative;
+    height: 100vh;
+    line-height: 1.5;
+    font-family: sans-serif;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-family: 'Source Sans Pro',sans-serif;
+}
+header{
+    position: fixed;
+    background-color: #fff;
+    height: 6vh;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 98%;
+}
+
+main{
+    background-color: #fff;
+    min-height: 80rem;
+    max-height: 120rem;
+}
+
+.my{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.my img{
+    width: 20px;
+    border-radius: 10px;
+}
+.my p{
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #333;
+}
+
+header .my img{
+    width: 50px;
+}
+
+header nav ul{
+    display: flex;
+    gap: 70px;
+}
+li{
+    list-style: none;
+}
+li a{
+    font-size: 0.8rem;
+    margin-right: 20px;
+    text-transform: capitalize;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    list-style: none;
+    text-decoration: none;
+}
+li:hover{
+    cursor: pointer;
+    opacity: .7;
+    transition: color .3s;
+}
+
+.main_one{
+    padding-top: 30px;
+    padding-bottom: 60px;
+    background: linear-gradient(to right,rgba(245,245,245,.8),rgba(245,245,245,.8)),url(https://d33wubrfki0l68.cloudfront.net/daac8858fd4a0ccea44f59dfd079c3c16c263f33/c157c/assets/svg/common-bg.svg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.main_one h1{
+    margin-top: 15pc;
+    width: 70%;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    color: #111;
+    font-weight: 800;
+}
+
+.main_one #init{
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+.main_one p{
+    font-size: 20px;
+}
+
+.main_one button{
+    margin-top: 40px;
+    border: none;
+    background: #7843e9;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    font-weight: 700;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,.15);
+    transition: transform .3s;
+    padding: 1.5rem 4rem;
+    font-size: 1rem;
+    outline: none;
+}
+
+.main_one button:hover{
+    position: relative;
+    bottom: 5px;
+    cursor: pointer;
+}
+
+.home-hero_socials{
+    box-shadow: rgba(100,100,111,.2) 0 7px 29px 0;
+    border-radius: 10px;
+    position: relative;
+    bottom: 20pc;
+    padding-left: 20px;
+    gap: 20px;
+    width: 50px;
+    background-color: #fff;
+}
+
+.home-hero_social img{
+    width: 30px;
+    padding: 10px 0 ;
+}
+.aboutMe{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.text{
+    text-align: center;
+}
+.text h2{
+    font-family: 'Source Sans Pro',sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 2rem;
+    color: #111;
+}
+
+.text h2::before{
+    content: '';
+    position: absolute;
+    top: 132%;
+    height: 5px;
+    width: 3rem;
+    background: #7843e9;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+.text span{
+    line-height: 1.6;
+    margin-top: 60px;
+    display: block;
+    max-width: 60rem;
+    color: #555;
+    font-size: 20px;
+}
+
+.skills{
+    width: 100vw;   
+    display: flex;
+    gap: 8rem;
+    margin: 50px 40px;
+}
+.skills .info{
+}
+.skills .info h3{
+    margin-bottom: 3rem;
+    font-weight: 700;
+    font-size: 1.7rem;
+}
+.skills .info p{
+    padding-bottom: 20px;
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 40rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+.skills .info button{
+    background: #7843e9;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    font-weight: 700;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,.15);
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border: none;
+}
+.habilities{
+    margin-top: 60px;
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.miskills h3{
+    font-weight: 700;
+    font-size: 1.7rem;
+}
+.miskills .skills_skill{
+    padding: 10px 20px;
+    margin: 5px;
+    background: rgba(153,153,153,.2);
+    font-size: 12px;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #666;
+}
+.projects{
+    text-align: center;
+}
+.projects h3{
+    font-size: 30px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 90px;
+    color: #111;
+    position: relative;
+}
+.projects h3::before{
+    content: '';
+    position: absolute;
+    top: 132%;
+    height: 5px;
+    width: 3rem;
+    background: #7843e9;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+.container{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.card-section{
+    display: grid;
+    gap: 1.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+.project{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: rgba(153,153,153,.2);
+    padding: 1.75rem;
+    border-radius: 1.75rem;
+}
+
+.contact{
+    margin-top: 120px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.contact h3{
+    margin-bottom: 20px;
+    font-size: 30px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 70px;
+    color: #111;
+    position: relative;
+}
+.contact h3::before{
+    content: '';
+    position: absolute;
+    top: 132%;
+    height: 5px;
+    width: 3rem;
+    background: #7843e9;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+.formulario input{
+    padding: 15px 25px;
+    color: #111;
+    background-color: rgba(153,153,153,.2);
+    width: 40%;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    border: 2px solid 
+}
+input::placeholder{
+    font-size: 16px;
+    color: #111;
+}
+.formulario button{
+    border:none;
+    background-color: transparent;
+    font-size: 20px;
+    position: relative;
+    right: 40px;
+}
+.formulario button{
+    cursor: pointer;
+}
+hr{
+    margin-top: 20px;
+    color: #fff;
+    height: 2px;
+}
+footer{
+    margin-top: 55pc;
+    width: 100vw;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+footer p{
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+.services span a{
+    text-decoration: none;
+    color: black;
+    margin: 20px;
+}
+#copy{
+    font-size: 14px;
+}
