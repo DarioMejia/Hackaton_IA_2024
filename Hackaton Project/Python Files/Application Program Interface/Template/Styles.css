@@ -53,6 +53,13 @@ h2 {
 
 .ButtonOn {
   position: absolute;
+  font-size: 25px;
+  size: 30px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
   top: 580px;
   left: 370px;
 }
