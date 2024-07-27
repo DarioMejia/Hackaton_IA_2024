@@ -1,0 +1,62 @@
+h1 {
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 35px;
+  text-align: center;
+}
+h2 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  text-align: center;
+}
+.img-izquierda {
+  position: absolute;
+  left: 370px;
+  top: 150px;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+}
+
+.textarea-izquierda-Locked {
+  position: absolute;
+  top: 150px;
+  left: 700px;
+  font-size: 25px;
+  background-color: black;
+  text-align: center;
+  color: white;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  width: 395px;
+  height: 300px;
+}
+.textarea-izquierda-Locked::placeholder {
+  color: white;
+}
+.textarea-abajo {
+  position: absolute;
+  top: 465px;
+  left: 370px;
+  font-size: 25px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  width: 720px;
+  height: 100px;
+}
+.textarea-abajo::placeholder {
+  color: white;
+}
+
+.ButtonOn {
+  position: absolute;
+  top: 580px;
+  left: 370px;
+}
+
+body {
+  background-color: black;
+}
