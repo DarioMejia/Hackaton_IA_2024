@@ -8,6 +8,14 @@
   --sb-size: 8px;
 }
 
+*.hidden-scroll-bar {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+*.hidden-scroll-bar::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
 *::-webkit-scrollbar {
   width: var(--sb-size)
 }
