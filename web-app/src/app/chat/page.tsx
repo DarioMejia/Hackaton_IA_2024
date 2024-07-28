@@ -220,7 +220,7 @@ export default function Page() {
                 )}
 
                 {!loadingData && chatHistory.length > 0 && (
-                    <div className="grow w-full md:max-w-3xl">
+                    <div className="grow w-full md:max-w-3xl flex flex-col gap-3 pb-10">
                         {chatHistory.map((message, index) => (
                             <ChatMessage key={index} message={message} id={'msg' + index}/>
                         ))}
