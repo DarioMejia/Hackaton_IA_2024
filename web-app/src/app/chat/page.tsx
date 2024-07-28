@@ -2,17 +2,29 @@
 import ChatMessage from "@/components/chat/ChatMsg";
 import Loader from "@/components/common/Loader";
 import { Message, ChatRols} from "@/lib/types";
+import { useAuthContext } from "@/providers/authProvider";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import React from "react";
 import { FormEvent, useState } from "react";
 
 
 export default function Page() {
+    const { user }: any = useAuthContext();
+    const router = useRouter();
+
     const [userMessage, setUserMessage] = useState('');
     const [chatHistory, setChatHistory] = useState<Message[]>([]);
     const [loading, setLoading] = useState(false);
 
+    if (!user) {
+        router.push('/auth/signin');
+        return null;
+    }
+
+    console.log(user);
+    
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
 
@@ -54,6 +66,7 @@ export default function Page() {
                 {chatHistory.length === 0 && (
                     <div className="grow flex justify-center items-center text-zinc-500 my-3">
                         <p className="text-3xl font-bold">Chatbot - ProcessOptima</p>
+                        
                     </div>
                 )}
 
