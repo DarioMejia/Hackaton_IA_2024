@@ -1,16 +1,36 @@
-import { collection, addDoc, doc, serverTimestamp, getFirestore, query, orderBy, getDocs, where, updateDoc } from "firebase/firestore";
+import { collection, addDoc, doc, serverTimestamp, getFirestore, query, orderBy, getDocs, where, updateDoc, DocumentReference, DocumentData, getDoc } from "firebase/firestore";
 import firebase from "@/services/firebase-service";
-import { Chat, Message } from "@/lib/types";
+import { Chat, ChatInfo, Message } from "@/lib/types";
+import { generateUsername } from "unique-username-generator";
 
 const db = getFirestore(firebase);
 
-export async function createChat(userId: string): Promise<string> {
-    const chatRef = await addDoc(collection(db, "chats"), {
+export async function createChat(userId: string, chatName: string = generateUsername("-")): Promise<string> {
+    const chatInfo: ChatInfo = {
         userId,
-        createdAt: serverTimestamp(),
-        isDeleted: false
-    });
+        isDeleted: false,
+        createdAt: new Date(),
+        chatName
+    };
+
+    const chatRef = await addDoc(collection(db, "chats"), chatInfo);
+    console.log(chatRef);
     return chatRef.id;
+};
+
+
+export async function findChatById(chatId: string): Promise<Chat | null> {
+    const chatDoc = await getDoc(doc(db, "chats", chatId));
+
+    if (chatDoc.exists()) {
+        return {
+            id: chatDoc.id,
+            ...chatDoc.data(),
+            createdAt: chatDoc.data().createdAt.toDate()
+        } as Chat;
+    }
+
+    return null;
 };
 
 export async function findChatsByUserId(userId: string): Promise<Chat[]> {
@@ -21,7 +41,16 @@ export async function findChatsByUserId(userId: string): Promise<Chat[]> {
         where("isDeleted", "==", false)
     );
     const querySnapshot = await getDocs(userChatsQuery);
-    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as Chat);
+    const chats = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+    return chats.map((chat: any) => {
+        return {
+            id: chat.id,
+            userId: chat.userId,
+            chatName: chat.chatName,
+            createdAt: chat.createdAt.toDate()
+        };
+    });
 };
 
 export async function deleteChat(chatId: string) {

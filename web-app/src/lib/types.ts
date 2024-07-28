@@ -12,15 +12,23 @@ export interface Message {
     date: Date;
 }
 
-export interface Chat {
-    id: string; 
+export interface ChatInfo {
     userId: string;
-    createdAt: firebase.firestore.Timestamp;
+    chatName?: string;
+    createdAt: Date;
     isDeleted?: boolean;
 }
-export interface User {
-    uid: string;
+
+export interface Chat extends ChatInfo {
+    id: string; 
+}
+
+
+export interface UserInfo {
     email: string;
     username?: string;
     isDeleted?: boolean;
+}
+export interface User extends UserInfo {
+    uid: string;
 }
