@@ -1,5 +1,5 @@
 
-import { User } from "@/models/user-model";
+import { User } from "@/lib/types";
 import firebase from "@/services/firebase-service";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 

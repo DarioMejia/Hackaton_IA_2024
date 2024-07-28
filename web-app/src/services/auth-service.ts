@@ -1,4 +1,4 @@
-import { User } from "@/models/user-model";
+import { User } from "@/lib/types";
 import firebase from "@/services/firebase-service";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { addDoc, collection, doc, getFirestore, setDoc } from "firebase/firestore";

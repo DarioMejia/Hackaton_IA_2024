@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getChatbotResponse } from '@/services/chatbot-service';
+import { getChatbotResponse } from '@/services/bot-service';
 
 export async function POST(request: Request) {
     try {
