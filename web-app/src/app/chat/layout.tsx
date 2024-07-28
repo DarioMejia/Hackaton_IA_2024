@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import {  AuthContextProvider } from "@/providers/authProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ProcessOptima",
+  title: "Chat | ProcessOptima",
   description: "Hackaton IA Julio 2024",
 };
 
@@ -16,7 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AuthContextProvider>
+            {children}
+        </AuthContextProvider>
+    </body>
     </html>
   );
 }
