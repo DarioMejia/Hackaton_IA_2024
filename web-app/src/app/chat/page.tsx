@@ -2,11 +2,13 @@
 import ChatMessage from "@/components/chat/ChatMsg";
 import Loader from "@/components/common/Loader";
 import { Message, ChatRols} from "@/lib/types";
+import { User } from "@/models/user-model";
 import { useAuthContext } from "@/providers/authProvider";
+import { getUserById } from "@/services/user-service";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { FormEvent, useState } from "react";
 
 
@@ -14,16 +16,29 @@ export default function Page() {
     const { user, signOut }: any = useAuthContext();
     const router = useRouter();
 
+    const [userInfo, setUserInfo] = useState<User | null>(null);
     const [userMessage, setUserMessage] = useState('');
     const [chatHistory, setChatHistory] = useState<Message[]>([]);
     const [loading, setLoading] = useState(false);
 
-    if (!user) {
+    const isAuthenticated = !!user;
+
+    
+    useEffect(() => {
+        if (!isAuthenticated) return;
+
+        const fetchUser = async () => {
+            const userInfo = await getUserById(user.uid);
+            setUserInfo(userInfo);
+        };
+
+        fetchUser();
+    }, [isAuthenticated, user.uid]);
+
+    if (!isAuthenticated) {
         router.push('/auth/signin');
         return null;
     }
-
-    console.log(user);
     
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
@@ -64,9 +79,9 @@ export default function Page() {
         <div className="flex-1 h-full w-full max-h-screen overflow-hidden flex flex-col justify-center items-center">
             <div className="flex-grow h-full overflow-y-auto flex flex-col p-3 w-full items-center">
                 {chatHistory.length === 0 && (
-                    <div className="grow flex justify-center items-center text-zinc-500 my-3">
-                        <p className="text-3xl font-bold">Chatbot - ProcessOptima</p>
-                        
+                    <div className="grow flex flex-col gap-3 justify-center items-center text-zinc-500 my-3">
+                        <p className="text-4xl font-bold">Chatbot - ProcessOptima</p>
+                        {userInfo?.username && (<p>Welcome <span className="font-bold">{userInfo.username}</span></p>)}
                     </div>
                 )}
 
