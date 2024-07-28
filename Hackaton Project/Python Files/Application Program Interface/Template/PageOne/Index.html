@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProcessOptima AI Technology</title>
+    <link rel="icon" href="Images/Designer (13).jpeg" type="image/jpeg" />
+    <link rel="stylesheet" href="Styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1><strong>ProcessOptima AI</strong></h1>
+      <h2>Hola, este es ProcessOptima AI, pregúntame lo que necesites</h2>
+    </header>
+
+    <main>
+      <img
+        src="Images/Designer (13).jpeg"
+        alt="ProcessOptima AI"
+        width="320"
+        height="300"
+        class="img-izquierda"
+      />
+
+      <div>
+        <label for="input-locked">Área de texto de solo lectura:</label>
+        <textarea
+          readonly
+          id="input-locked"
+          cols="30"
+          rows="10"
+          placeholder="¡Hola! Soy Process AI, pregúntame lo que desees en el área de texto inferior."
+          wrap="soft"
+          class="textarea textarea-izquierda-Locked"
+        ></textarea>
+      </div>
+
+      <div>
+        <label for="input-user">Inserta tu texto aquí:</label>
+        <textarea
+          id="input-user"
+          name="input-user"
+          cols="30"
+          rows="10"
+          placeholder="Inserta tu texto aquí."
+          wrap="soft"
+          class="textarea textarea-abajo"
+        ></textarea>
+      </div>
+
+      <input
+        type="button"
+        class="ButtonOn"
+        value="Enviar mensaje"
+        title="Haz clic para enviar tu mensaje"
+      />
+    </main>
+  </body>
+</html>

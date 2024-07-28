@@ -1,67 +1,64 @@
 h1 {
   color: white;
   font-family: "Times New Roman", Times, serif;
-  font-size: 35px;
+  font-size: 2.2rem; /* Uso de rem para mejor accesibilidad */
   text-align: center;
 }
+
 h2 {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 25px;
+  font-size: 1.6rem;
   text-align: center;
 }
+
 .img-izquierda {
   position: absolute;
-  left: 370px;
-  top: 150px;
+  left: 23rem;
+  top: 9.4rem;
   border: 2px solid #ffffff;
   border-radius: 8px;
+}
+
+.textarea {
+  font-size: 1.6rem;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+}
+
+.textarea::placeholder {
+  color: white;
 }
 
 .textarea-izquierda-Locked {
   position: absolute;
-  top: 150px;
-  left: 700px;
-  font-size: 25px;
-  background-color: black;
-  text-align: center;
-  color: white;
-  border: 2px solid #ffffff;
-  border-radius: 8px;
-  width: 395px;
-  height: 300px;
+  top: 9.4rem;
+  left: 43.8rem;
+  width: 24.7rem;
+  height: 18.75rem;
 }
-.textarea-izquierda-Locked::placeholder {
-  color: white;
-}
+
 .textarea-abajo {
   position: absolute;
-  top: 465px;
-  left: 370px;
-  font-size: 25px;
-  background-color: black;
-  color: white;
-  text-align: center;
-  border: 2px solid #ffffff;
-  border-radius: 8px;
-  width: 720px;
-  height: 100px;
-}
-.textarea-abajo::placeholder {
-  color: white;
+  top: 29.06rem;
+  left: 23rem;
+  width: 45rem;
+  height: 6.25rem;
 }
 
 .ButtonOn {
   position: absolute;
-  font-size: 25px;
-  size: 30px;
+  font-size: 1.6rem;
   background-color: black;
   color: white;
   text-align: center;
   border: 2px solid #ffffff;
   border-radius: 8px;
-  top: 580px;
-  left: 370px;
+  top: 36.25rem;
+  left: 23rem;
 }
 
 body {
