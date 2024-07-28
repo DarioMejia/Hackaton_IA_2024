@@ -257,7 +257,7 @@ export default function Page() {
                     </button>}
                 </form>
                 <div className="text-center text-sm text-zinc-500 my-3">
-                    Chatbot - ProcessOptima | <a className="hover:text-zinc-100 cursor-pointer" onClick={signOut}>Sing out</a>
+                    Chatbot - ProcessOptima
                 </div>
             </div>
         </div>
