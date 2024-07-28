@@ -172,7 +172,7 @@ export default function Page() {
             </button>
             <hr className="border-zinc-700 my-5"/>
             
-            <div className="overflow-y-auto flex flex-col flex-grow h-full hidden-scroll-bar text-zinc-400">{
+            <div className="overflow-y-auto flex flex-col flex-grow h-full hidden-scroll-bar text-zinc-400 pb-40">{
             chats.map((chat, index) => (
                 <button
                     key={index}

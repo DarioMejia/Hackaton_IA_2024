@@ -2,10 +2,14 @@ import { collection, addDoc, doc, serverTimestamp, getFirestore, query, orderBy,
 import firebase from "@/services/firebase-service";
 import { Chat, ChatInfo, Message } from "@/lib/types";
 import { generateUsername } from "unique-username-generator";
+import { capitalize } from "@/lib/utils";
 
 const db = getFirestore(firebase);
 
-export async function createChat(userId: string, chatName: string = generateUsername("-")): Promise<string> {
+export async function createChat(userId: string, chatName: string = generateUsername(" ")): Promise<string> {
+
+    chatName = capitalize(chatName.trim());
+    
     const chatInfo: ChatInfo = {
         userId,
         isDeleted: false,
