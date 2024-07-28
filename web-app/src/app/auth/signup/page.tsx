@@ -33,8 +33,8 @@ export default function Page() {
         validationSchema: schema,
         onSubmit: async (values) => {
             try {
-                await signUp(values.email, values.password);
-                router.push('/chat');
+                await signUp(values.email, values.password, values.username);
+                router.push('../chat');
             } catch (error: any) {
                 let errorMessage = "An unexpected error occurred.";
 
@@ -115,6 +115,12 @@ export default function Page() {
                 </form>
 
                 {error && <p className="text-red-300 text-center">{error}</p>}
+
+                <hr className="border-zinc-500 my-3"/>
+
+                <p className="text-sm text-zinc-300 text-center">
+                    You have an account? <a className="text-lime-400 hover:text-lime-500 cursor-pointer" onClick={() => router.push('/auth/signin')}>Sign In</a>
+                </p>
             </div>
         </main>
     );

@@ -98,6 +98,12 @@ export default function Page() {
                 </form>
 
                 {error && <p className="text-red-300 text-center">{error}</p>}
+
+                <hr className="border-zinc-500 my-3"/>
+
+                <p className="text-sm text-zinc-300 text-center">
+                    Don&apos;t have an account? <a className="text-lime-400 hover:text-lime-500 cursor-pointer" onClick={() => router.push('/auth/signup')}>Sign up</a>
+                </p>
             </div>
         </main>
     );
