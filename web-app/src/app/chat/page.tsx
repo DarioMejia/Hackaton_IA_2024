@@ -11,7 +11,7 @@ import { FormEvent, useState } from "react";
 
 
 export default function Page() {
-    const { user }: any = useAuthContext();
+    const { user, signOut }: any = useAuthContext();
     const router = useRouter();
 
     const [userMessage, setUserMessage] = useState('');
@@ -108,7 +108,7 @@ export default function Page() {
                     </button>}
                 </form>
                 <div className="text-center text-sm text-zinc-500 my-3">
-                    Chatbot - ProcessOptima
+                    Chatbot - ProcessOptima | <a className="hover:text-zinc-100 cursor-pointer" onClick={signOut}>Sing out</a>
                 </div>
             </div>
         </div>

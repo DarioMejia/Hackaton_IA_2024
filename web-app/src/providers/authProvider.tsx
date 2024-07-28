@@ -7,6 +7,7 @@ import {
     User as FirebaseUser,
 } from 'firebase/auth';
 import firebase from '@/services/firebase-service';
+import { signOutUser } from '@/services/auth-service';
 
 const auth = getAuth(firebase);
 
@@ -35,8 +36,13 @@ export const AuthContextProvider = ({
         return () => unsubscribe();
     }, []);
 
+    const handleSignOut = async () => {
+        await signOutUser();
+        setUser(null);
+    };
+    
     return (
-        <AuthContext.Provider value={{ user }}>
+        <AuthContext.Provider value={{ user, signOut: handleSignOut }}>
             {loading ? <div>Loading...</div> : children}
         </AuthContext.Provider>
     );
