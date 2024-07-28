@@ -176,29 +176,31 @@ export default function Page() {
         </button>
         <hr className="border-zinc-700 my-5" />
 
-        <div className="overflow-y-auto flex flex-col flex-grow h-full hidden-scroll-bar text-zinc-100 pb-40">
-          {chats.map((chat, index) => (
+        <div className="overflow-y-auto flex flex-col flex-grow h-full hidden-scroll-bar text-zinc-400 pb-40">{
+          chats.map((chat, index) => (
             <button
               key={index}
-              className="block w-full text-left my-3 rounded-lg cursor-pointer py-1 px-3 hover:bg-zinc-900 transition-all hover:text-zinc-100 text-md"
-              onClick={() => handleChangeChat(chat.id)}
-            >
-              <p className="mb-1">{chat.chatName ?? `chat ${index}`}</p>
+                className="block w-full text-left my-3 rounded-lg cursor-pointer py-1 px-3 hover:bg-zinc-900 transition-all hover:text-zinc-100 text-md"
+                onClick={() => handleChangeChat(chat.id)}>
 
-              <p className="text-xs text-zinc-500">
-                {new Date(chat.createdAt).toLocaleDateString()}
-              </p>
+                <p className="mb-1">
+                  {chat.chatName ?? `chat ${index}`}
+                </p>
+
+                <p className="text-xs text-zinc-500">
+                  {(new Date(chat.createdAt)).toLocaleDateString()}
+                </p>
             </button>
-          ))}
-        </div>
+            ))}
+            </div>
       </aside>
       <div className="flex-1 w-full max-h-screen overflow-hidden flex flex-col justify-center items-center">
         <div className="w-full text-zinc-500 p-3 flex flex-row items-center justify-between">
           <div>
             <input
-              className="bg-zinc-100 p-3 rounded-lg outline-none focus:ring-2 focus:text-zinc-100"
+              className="bg-zinc-900 p-3 rounded-lg outline-none focus:ring-2 focus:text-zinc-100"
               type="text"
-              value={chatName ?? ""}
+              value={chatName ?? ''}
               onChange={(e) => setChatName(e.target.value)}
               onBlur={(e) => handleChangeChatName(e.target.value)}
             />
