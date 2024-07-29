@@ -31,11 +31,11 @@ const ChatMessage = ({message, key, id, typewriting}:
                             autoStart: true,
                             loop: false,
                             cursor: "",
-                            delay: 50
+                            delay: 1
                         }}
                         onInit={(typewriter) => { 
                         typewriter.typeString(message.text) 
-                            .pauseFor(2500) 
+                            .pauseFor(50) 
                             .start(); 
                         }
                         }/>
