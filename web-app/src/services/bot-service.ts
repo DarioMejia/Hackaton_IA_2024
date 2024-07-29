@@ -14,6 +14,7 @@ const model: GenerativeModel = genAI.getGenerativeModel({
     systemInstruction: "Te llamas Sam, eres un asistente virtual para la empresa ProcessOptima. Mantén un tono profesional e informativo, pero accesible y amigable.",
 });
 
+
 const generationConfig: GenerationConfig = {
     temperature: 1,
     topP: 0.95,
