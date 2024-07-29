@@ -97,11 +97,11 @@ export default function Page() {
         if (!chatId) {
             const chatId = await createChat(user.uid);
             const _chats = await findChatsByUserId(user.uid);
+            console.log(_chats);
             setChats(_chats as Chat[]);
             setChatId(chatId);
             setChat(_chats[0]);
             setChatName(_chats[0].chatName ?? '');
-
         }
         
         if (!chatId) return <h1>Somethig went wrong...</h1>;
@@ -134,6 +134,8 @@ export default function Page() {
         };
         await addMessage(chatId, user.uid,messange);
         setChatHistory((prevChatHistory) => [...prevChatHistory, messange]);
+
+        setChats(await findChatsByUserId(user.uid) as Chat[]);
     };
 
     const handleCreateChat = async () => {
@@ -181,7 +183,7 @@ export default function Page() {
                         {chat.chatName ?? `chat ${index}`}
                     </p>
 
-                    <p className="text-xs text-zinc-500">{(new Date(chat.createdAt)).toLocaleDateString()}</p>
+                    <p className="text-xs text-zinc-500">{(new Date(chat.updatedAt ?? '')).toLocaleDateString([], {hour: '2-digit',minute: '2-digit',})}</p>
                 </button>
             ))}
             </div>

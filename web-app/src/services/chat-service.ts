@@ -14,6 +14,7 @@ export async function createChat(userId: string, chatName: string = generateUser
         userId,
         isDeleted: false,
         createdAt: new Date(),
+        updatedAt: new Date(),
         chatName
     };
 
@@ -44,7 +45,7 @@ export async function findChatsByUserId(userId: string): Promise<Chat[]> {
             chatsRef,
             where("userId", "==", userId),
             where("isDeleted", "==", false),
-            orderBy("updatedAt", "desc")
+            orderBy("updatedAt", "desc"),
         );
         const querySnapshot = await getDocs(userChatsQuery);
         const chats = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
