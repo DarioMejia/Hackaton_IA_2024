@@ -1,6 +1,9 @@
 "use client";
 
 import { ChatRols, Message } from "@/lib/types";
+import { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import Typewriter from 'typewriter-effect'; 
 
 const now= new Date();
@@ -19,13 +22,14 @@ const ChatMessage = ({message, key, id, typewriting}:
         key?: number,
         id?: string
         typewriting?: boolean
-    }) => {
-    
+    }) => { 
     return (
         <div id={id} className={`flex w-full ${message.role === ChatRols.user ? "justify-end" :"justify-start"}`} key={key}>
             <div className="shadow-md max-w-[75%] min-w-[30%] bg-zinc-800 px-3 py-4 rounded-lg text-zinc-300">
                 <p className="text-zinc-300">
-                    {!typewriting && message.text}
+                    {!typewriting && <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                            {message.text}
+                        </ReactMarkdown>}
                     {typewriting && <Typewriter 
                         options={{
                             autoStart: true,

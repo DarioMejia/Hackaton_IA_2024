@@ -3,10 +3,11 @@ import ChatMessage from "@/components/chat/ChatMsg";
 import CloseIcon from "@/components/common/CloaseIcon";
 import Loader from "@/components/common/Loader";
 import PlusIcon from "@/components/common/PlusIcon";
+import { TrashCan } from "@/components/common/TrashCan";
 import { Message, ChatRols, Chat} from "@/lib/types";
 import { User } from "@/lib/types";
 import { useAuthContext } from "@/providers/authProvider";
-import { addMessage, createChat, findChatById, findChatsByUserId, getMessages } from "@/services/chat-service";
+import { addMessage, createChat, deleteChat, findChatById, findChatsByUserId, getMessages } from "@/services/chat-service";
 import { getUserById } from "@/services/user-service";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -159,6 +160,19 @@ export default function Page() {
     const handleChangeChatName = async (newName: string) => {
         console.log(`Hello ${newName}`);
     };
+
+
+    const handleDeleteChat = async () => {
+        setLoadingData(true);
+        await deleteChat(chatId as string);
+        setLoadingData(false);
+
+        setChatId(null);
+        setChat(null);
+        setChatName(null);
+        setChatHistory([]);
+        setChats(await findChatsByUserId(user.uid) as Chat[]);
+    };
     
     return <main className="flex min-h-screen max-h-screen overflow-hidden bg-zinc-900 flex-row">
         <aside className="bg-zinc-950 w-52  p-5 text-zinc-300 overflow-hidden">
@@ -190,7 +204,13 @@ export default function Page() {
         </aside>
         <div className="flex-1 w-full max-h-screen overflow-hidden flex flex-col justify-center items-center">
             <div className="w-full text-zinc-500 p-3 flex flex-row items-center justify-between">
-                <div>
+                <div className="flex flex-row items-center gap-4">
+                    <button
+                        className="hover:text-red-600"
+                        onClick={handleDeleteChat}
+                    >
+                        <TrashCan />
+                    </button>
                     <input
                         className="bg-zinc-900 p-3 rounded-lg outline-none focus:ring-2 focus:text-zinc-100"
                         type="text"
@@ -237,7 +257,7 @@ export default function Page() {
                         placeholder="Escriba algo..."
                         className={`flex-1 bg-zinc-800 text-white outline-none ${loadingResponse ? "opacity-50" : ""}`}
                         value={userMessage}
-                        disabled={loadingResponse}
+                        disabled={loadingResponse || loadingData}
                         onChange={(e) => setUserMessage(e.target.value)}
                     />
 
