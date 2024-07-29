@@ -74,7 +74,6 @@ export default function Page() {
             if (!chatId) return;
 
             const messages = await getMessages(chatId);
-            console.log(messages)
             setChatHistory(messages);
 
         };
@@ -98,11 +97,11 @@ export default function Page() {
         if (!chatId) {
             const chatId = await createChat(user.uid);
             const _chats = await findChatsByUserId(user.uid);
+            console.log(_chats);
             setChats(_chats as Chat[]);
             setChatId(chatId);
             setChat(_chats[0]);
             setChatName(_chats[0].chatName ?? '');
-
         }
         
         if (!chatId) return <h1>Somethig went wrong...</h1>;
@@ -135,6 +134,8 @@ export default function Page() {
         };
         await addMessage(chatId, user.uid,messange);
         setChatHistory((prevChatHistory) => [...prevChatHistory, messange]);
+
+        setChats(await findChatsByUserId(user.uid) as Chat[]);
     };
 
     const handleCreateChat = async () => {
@@ -152,7 +153,6 @@ export default function Page() {
         setChatId(chatId);
         const chat = await findChatById(chatId);
         setChat(chat as Chat);
-        console.log(chats);
         setChatName(chat!.chatName ?? '');
     };
 
@@ -183,7 +183,7 @@ export default function Page() {
                         {chat.chatName ?? `chat ${index}`}
                     </p>
 
-                    <p className="text-xs text-zinc-500">{(new Date(chat.createdAt)).toLocaleDateString()}</p>
+                    <p className="text-xs text-zinc-500">{(new Date(chat.updatedAt ?? '')).toLocaleDateString([], {hour: '2-digit',minute: '2-digit',})}</p>
                 </button>
             ))}
             </div>
@@ -220,9 +220,9 @@ export default function Page() {
                 )}
 
                 {!loadingData && chatHistory.length > 0 && (
-                    <div className="grow w-full md:max-w-3xl">
+                    <div className="grow w-full md:max-w-3xl flex flex-col gap-3 pb-10">
                         {chatHistory.map((message, index) => (
-                            <ChatMessage key={index} message={message} id={'msg' + index}/>
+                            <ChatMessage key={index} message={message} id={'msg' + index} typewriting={(index === chatHistory.length - 1) && (message.role === ChatRols.model)}/>
                         ))}
                     </div>)
                 }

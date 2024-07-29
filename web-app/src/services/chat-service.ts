@@ -14,6 +14,7 @@ export async function createChat(userId: string, chatName: string = generateUser
         userId,
         isDeleted: false,
         createdAt: new Date(),
+        updatedAt: new Date(),
         chatName
     };
 
@@ -38,23 +39,30 @@ export async function findChatById(chatId: string): Promise<Chat | null> {
 };
 
 export async function findChatsByUserId(userId: string): Promise<Chat[]> {
-    const chatsRef = collection(db, "chats");
-    const userChatsQuery = query(
-        chatsRef,
-        where("userId", "==", userId),
-        where("isDeleted", "==", false)
-    );
-    const querySnapshot = await getDocs(userChatsQuery);
-    const chats = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    try {
+        const chatsRef = collection(db, "chats");
+        const userChatsQuery = query(
+            chatsRef,
+            where("userId", "==", userId),
+            where("isDeleted", "==", false),
+            orderBy("updatedAt", "desc"),
+        );
+        const querySnapshot = await getDocs(userChatsQuery);
+        const chats = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-    return chats.map((chat: any) => {
-        return {
-            id: chat.id,
-            userId: chat.userId,
-            chatName: chat.chatName,
-            createdAt: chat.createdAt.toDate()
-        };
-    });
+        return chats.map((chat: any) => {
+            return {
+                id: chat.id,
+                userId: chat.userId,
+                chatName: chat.chatName,
+                createdAt: chat.createdAt.toDate(),
+                updatedAt: chat.updatedAt.toDate()
+            };
+        });
+    } catch (error) {
+        console.error("Error getting chats:", error);
+        return [];
+    }
 };
 
 export async function deleteChat(chatId: string) {
@@ -77,6 +85,13 @@ export async function getMessages(chatId: string): Promise<Message[]> {
 export async function addMessage(chatId: string, userId: string, message: Message) {
     const messagesRef = collection(db, "chats", chatId, "messages");
     await addDoc(messagesRef, message);
+
+    // Update the chat's updatedAt field
+    const chatRef = doc(db, "chats", chatId);
+    await updateDoc(chatRef, {
+        updatedAt: new Date()
+    });
+
 };
 
 

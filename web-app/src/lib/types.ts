@@ -16,7 +16,8 @@ export interface ChatInfo {
     userId: string;
     chatName?: string;
     createdAt: Date;
-    isDeleted?: boolean;
+    isDeleted?: boolean; 
+    updatedAt?: Date;
 }
 
 export interface Chat extends ChatInfo {
