@@ -7,7 +7,7 @@ export default function Home() {
     const router = useRouter();
 
     return (
-        <main className="flex min-h-screen max-h-screen overflow-hidden bg-zinc-300 flex-col">
+        <main className="flex min-h-screen max-h-screen overflow-hidden bg-zinc-300 flex-col text-zinc-900">
 
             <header className="bg-zinc-200 h-14 w-full shadow-sm flex flex-row justify-center items-center p-10">
 
