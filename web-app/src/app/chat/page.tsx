@@ -74,7 +74,6 @@ export default function Page() {
             if (!chatId) return;
 
             const messages = await getMessages(chatId);
-            console.log(messages)
             setChatHistory(messages);
 
         };
@@ -152,7 +151,6 @@ export default function Page() {
         setChatId(chatId);
         const chat = await findChatById(chatId);
         setChat(chat as Chat);
-        console.log(chats);
         setChatName(chat!.chatName ?? '');
     };
 
@@ -222,7 +220,7 @@ export default function Page() {
                 {!loadingData && chatHistory.length > 0 && (
                     <div className="grow w-full md:max-w-3xl flex flex-col gap-3 pb-10">
                         {chatHistory.map((message, index) => (
-                            <ChatMessage key={index} message={message} id={'msg' + index}/>
+                            <ChatMessage key={index} message={message} id={'msg' + index} typewriting={(index === chatHistory.length - 1) && (message.role === ChatRols.model)}/>
                         ))}
                     </div>)
                 }

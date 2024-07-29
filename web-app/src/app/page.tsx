@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Typewriter from 'typewriter-effect'; 
 
 export default function Home() {
     const router = useRouter();
@@ -28,10 +29,20 @@ export default function Home() {
 
                 <div className="text-center max-w-[70%] flex flex-col gap-5 justify-center items-center">
                     <p className="text-caption font-bold text-lg">ProcessOptima IA</p>
+
+                    
                     <h1 className="my-5 text-2xl md:text-5xl text-balance ">
-                        Resolve your doubts.
-                        Inspire your creativity.
-                        Produce your ideas.
+                        <Typewriter 
+                        options={{
+                            autoStart: true,
+                            loop: false,
+                        }}
+                        onInit={(typewriter) => { 
+                        typewriter.typeString('Resolve your doubts. Inspire your creativity. Produce your ideas.') 
+                            .pauseFor(2500) 
+                            .start(); 
+                        }} 
+                    /> 
                     </h1>
                     <p className="text-balance">
                         ProcessOptima is a virtual assistant that helps you with your doubts, 
